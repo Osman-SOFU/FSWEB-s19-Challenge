@@ -1,0 +1,8 @@
+com\twitter\Entity\User.class
+com\twitter\Entity\Like.class
+target\classes\target\classes\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst
+com\twitter\Entity\Comment.class
+com\twitter\FswebApplication.class
+target\classes\target\classes\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst
+com\twitter\Entity\Tweet.class
+com\twitter\Entity\Retweet.class
