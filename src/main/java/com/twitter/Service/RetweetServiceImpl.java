@@ -1,6 +1,8 @@
 package com.twitter.Service;
 
 import com.twitter.Entity.Retweet;
+import com.twitter.Entity.Tweet;
+import com.twitter.Entity.User;
 import com.twitter.Exceptions.TwitterException;
 import com.twitter.Repository.RetweetRepository;
 import lombok.AllArgsConstructor;
@@ -43,5 +45,19 @@ public class RetweetServiceImpl implements RetweetService{
     @Override
     public void delete(Long id) {
         retweetRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByUserAndTweet(User user, Tweet tweet) {
+        Retweet retweet = retweetRepository.findByUserIdAndTweetId(user.getId(), tweet.getId());
+        if (retweet == null) {
+            throw new TwitterException("Retweet bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+        retweetRepository.delete(retweet);
+    }
+
+    @Override
+    public boolean existsByUserIdAndTweetId(Long userId, Long tweetId) {
+        return retweetRepository.existsByUserIdAndTweetId(userId, tweetId);
     }
 }

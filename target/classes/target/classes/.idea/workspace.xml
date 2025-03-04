@@ -4,61 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2316f2f-f88f-48d9-b282-e9840cbf1ece" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/FSWEB-s19-Challenge.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Config/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/AuthController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Comment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Like.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Retweet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Tweet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Exceptions/ErrorResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Exceptions/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Exceptions/TwitterException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/FswebApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/CommentRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/LikeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/RetweetRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/TweetRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/AuthenticationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/AuthenticationServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/RetweetService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/RetweetServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/TweetService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/TweetServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserDetailsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserDetailsServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/fsweb-s19-challenge-1.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/fsweb-s19-challenge-1.0.0.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/fsweb-s19-challenge-1.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/fsweb-s19-challenge-1.0.0.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+    <list default="true" id="e2316f2f-f88f-48d9-b282-e9840cbf1ece" name="Changes" comment="Update V2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/LikeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/RetweetController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/TweetController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dao/TweetDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dao/TweetDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/CommentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/CommentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/LikeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/RetweetRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/TweetRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/TweetResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/UserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetServiceImplForDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/LikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/LikeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/RetweetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/RetweetRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/LikeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Repository/LikeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/TweetService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/TweetService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/TweetServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/TweetServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +56,7 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -105,7 +89,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/GitHub/FSWEB-s19-Challenge",
+    "last_opened_file_path": "E:/GitHub/University",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -141,6 +125,19 @@
       <option name="presentableId" value="Default" />
       <updated>1740927498655</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update V2">
+      <option name="closed" value="true" />
+      <created>1740957384294</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740957384294</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update V2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update V2" />
   </component>
 </project>

@@ -9,7 +9,7 @@ public interface TweetService {
     Tweet findById(Long id);
     List<Tweet> findByUserId(Long id);
     Tweet save(Tweet tweet);
-    Tweet update(Long id, Tweet tweet);
+    Tweet update(Tweet tweet);
     void delete(Long id);
     List<Tweet> getAllSortedByNewest();
 }

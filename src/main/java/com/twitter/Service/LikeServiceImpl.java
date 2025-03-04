@@ -1,6 +1,8 @@
 package com.twitter.Service;
 
 import com.twitter.Entity.Like;
+import com.twitter.Entity.Tweet;
+import com.twitter.Entity.User;
 import com.twitter.Exceptions.TwitterException;
 import com.twitter.Repository.LikeRepository;
 import lombok.AllArgsConstructor;
@@ -61,5 +63,19 @@ public class LikeServiceImpl implements LikeService{
     @Override
     public void delete(Long id) {
         likeRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existsByUserIdAndTweetId(Long userId, Long tweetId) {
+        return likeRepository.existsByUserIdAndTweetId(userId,tweetId);
+    }
+
+    @Override
+    public void deleteByUserAndTweet(User user, Tweet tweet) {
+        Like like = likeRepository.findByUserIdAndTweetId(user.getId(), tweet.getId());
+        if (like == null) {
+            throw new TwitterException("Beğeni bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+        likeRepository.delete(like);
     }
 }

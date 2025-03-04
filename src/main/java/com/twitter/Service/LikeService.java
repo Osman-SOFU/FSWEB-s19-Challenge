@@ -1,7 +1,8 @@
 package com.twitter.Service;
 
-import com.twitter.Entity.Comment;
 import com.twitter.Entity.Like;
+import com.twitter.Entity.Tweet;
+import com.twitter.Entity.User;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface LikeService {
     Like save(Like like);
     Like update(Long id, Like like);
     void delete(Long id);
+    boolean existsByUserIdAndTweetId(Long userId, Long tweetId);
+    void deleteByUserAndTweet(User user, Tweet tweet);
 }

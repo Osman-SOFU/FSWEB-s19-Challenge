@@ -16,4 +16,8 @@ public interface LikeRepository extends JpaRepository<Like, Long> {
     //Bir kullanıcının belirli bir tweet'i beğenip beğenmediğini kontrol eder.
     @Query("SELECT CASE WHEN COUNT(l) > 0 THEN TRUE ELSE FALSE END FROM Like l WHERE l.user.id = :userId AND l.tweet.id = :tweetId")
     boolean existsByUserIdAndTweetId(@Param("userId") Long userId, @Param("tweetId") Long tweetId);
+
+    // ✅ Kullanıcının belirli bir tweet'e yaptığı like'ı getirir.
+    @Query("SELECT l FROM Like l WHERE l.user.id = :userId AND l.tweet.id = :tweetId")
+    Like findByUserIdAndTweetId(@Param("userId") Long userId, @Param("tweetId") Long tweetId);
 }

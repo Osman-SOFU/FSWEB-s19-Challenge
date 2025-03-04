@@ -19,19 +19,22 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @NotNull
     @NotBlank
+    @Column(name = "name")
     private String name;
 
     @NotNull
     @NotBlank
+    @Column(name = "surname")
     private String surname;
 
     @NotNull
     @NotBlank
-    @Column(unique = true)
+    @Column(name = "email", unique = true)
     private String email;
 
     @JsonIgnore

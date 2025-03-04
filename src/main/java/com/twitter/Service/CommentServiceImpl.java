@@ -49,10 +49,10 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public Comment update(Long id, Comment comment) {
+    public Comment update(Comment comment) {
         Comment optionalComment = commentRepository
-                .findById(id)
-                .orElseThrow(() -> new TwitterException(id +"'li kullanıcı bulunamadı", HttpStatus.NOT_FOUND));
+                .findById(comment.getId())
+                .orElseThrow(() -> new TwitterException(comment.getId() +"'li yorum bulunamadı", HttpStatus.NOT_FOUND));
 
         if (comment.getText() != null) {
             optionalComment.setText(comment.getText());

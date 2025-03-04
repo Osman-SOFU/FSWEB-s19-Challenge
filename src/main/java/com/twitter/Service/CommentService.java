@@ -9,6 +9,6 @@ public interface CommentService {
     Comment findById(Long id);
     List<Comment> findByTweetId(Long id);
     Comment save(Comment comment);
-    Comment update(Long id, Comment comment);
+    Comment update(Comment comment);
     void delete(Long id);
 }

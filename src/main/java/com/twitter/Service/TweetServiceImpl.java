@@ -48,10 +48,10 @@ public class TweetServiceImpl implements TweetService{
     }
 
     @Override
-    public Tweet update(Long id, Tweet tweet) {
+    public Tweet update(Tweet tweet) {
         Tweet optionalTweet = tweetRepository
-                .findById(id)
-                .orElseThrow(() -> new TwitterException(id +"'li kullanıcı bulunamadı", HttpStatus.NOT_FOUND));
+                .findById(tweet.getId())
+                .orElseThrow(() -> new TwitterException(tweet.getId() +"'li tweet bulunamadı", HttpStatus.NOT_FOUND));
 
         if (tweet.getText() != null) {
             optionalTweet.setText(tweet.getText());
