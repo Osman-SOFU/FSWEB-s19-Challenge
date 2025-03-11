@@ -1,6 +1,7 @@
 package com.twitter.Controller;
 
 import com.twitter.Dto.LikeRequest;
+import com.twitter.Dto.LikeResponse;
 import com.twitter.Entity.Like;
 import com.twitter.Entity.Tweet;
 import com.twitter.Entity.User;
@@ -10,6 +11,9 @@ import com.twitter.Service.TweetService;
 import com.twitter.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,32 +32,58 @@ public class LikeController {
     }
 
     @PostMapping("/like")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Like likeTweet(@RequestBody LikeRequest likeRequest) {
-        User user = userService.findById(likeRequest.getUserId());
-        Tweet tweet = tweetService.findById(likeRequest.getTweetId());
-
-        if (likeService.existsByUserIdAndTweetId(user.getId(), tweet.getId())) {
-            throw new TwitterException("Bu tweeti zaten beğendiniz.", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<LikeResponse> likeTweet(@RequestBody LikeRequest request,
+                                                  @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new TwitterException("Kimlik doğrulaması başarısız!", HttpStatus.UNAUTHORIZED);
         }
 
-        Like like = new Like();
-        like.setUser(user);
-        like.setTweet(tweet);
+        User user = userService.findByEmail(userDetails.getUsername());
+        if (user == null) {
+            throw new TwitterException("Kullanıcı bulunamadı!", HttpStatus.NOT_FOUND);
+        }
 
-        return likeService.save(like);
+        Tweet tweet = tweetService.findById(request.getTweetId());
+        if (tweet == null) {
+            throw new TwitterException("Tweet bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+
+        if (likeService.hasUserLikedTweet(user, tweet)) {
+            throw new TwitterException("Bu tweeti zaten beğendiniz!", HttpStatus.BAD_REQUEST);
+        }
+
+        // Beğeni ekleme işlemi
+        Like like = likeService.save(user, tweet);
+
+        // Güncellenmiş beğeni sayısını al
+        int likeCount = likeService.countByTweetId(tweet.getId());
+
+        // Yanıtı oluştur ve döndür
+        LikeResponse response = new LikeResponse(tweet.getId(), user.getEmail(), "Tweet beğenildi!", likeCount);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/dislike")
     @ResponseStatus(HttpStatus.OK)
-    public void dislikeTweet(@RequestBody LikeRequest likeRequest) {
-        User user = userService.findById(likeRequest.getUserId());
-        Tweet tweet = tweetService.findById(likeRequest.getTweetId());
+    public void dislikeTweet(@RequestBody LikeRequest request, @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new TwitterException("Kimlik doğrulaması başarısız!", HttpStatus.UNAUTHORIZED);
+        }
 
-        if (!likeService.existsByUserIdAndTweetId(user.getId(), tweet.getId())) {
+        User user = userService.findByEmail(userDetails.getUsername());
+        if (user == null) {
+            throw new TwitterException("Kullanıcı bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+
+        Tweet tweet = tweetService.findById(request.getTweetId());
+        if (tweet == null) {
+            throw new TwitterException("Tweet bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+
+        if (!likeService.hasUserLikedTweet(user, tweet)) {
             throw new TwitterException("Bu tweeti daha önce beğenmediniz.", HttpStatus.BAD_REQUEST);
         }
 
-        likeService.deleteByUserAndTweet(user, tweet);
+        likeService.removeLike(user, tweet);
     }
 }

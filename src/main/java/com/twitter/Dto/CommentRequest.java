@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 public class CommentRequest {
 
     @NotNull
+    private Long tweetId;
+
+    @NotNull
     @NotBlank
     @Size(min = 1, max = 200)
     private String text;
-
-    @NotNull
-    private Long userId;
 }

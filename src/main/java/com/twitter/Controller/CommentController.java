@@ -11,6 +11,8 @@ import com.twitter.Service.TweetService;
 import com.twitter.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,15 +33,23 @@ public class CommentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CommentResponse create(@Validated @RequestBody CommentRequest commentRequest) {
-        User user = userService.findById(commentRequest.getUserId());
+    public CommentResponse create(@Validated @RequestBody CommentRequest commentRequest,
+                                  @AuthenticationPrincipal UserDetails userDetails) {
+        // Kullanıcıyı email ile veritabanından al
+        User user = userService.findByEmail(userDetails.getUsername());
+
         if (user == null) {
             throw new TwitterException("Kullanıcı bulunamadı.", HttpStatus.NOT_FOUND);
         }
 
+        // Tweet'i al
+        Tweet tweet = tweetService.findById(commentRequest.getTweetId());
+
+        // Yorum oluştur
         Comment comment = new Comment();
         comment.setText(commentRequest.getText());
         comment.setUser(user);
+        comment.setTweet(tweet); // ✅ Tweet'i set et!
 
         commentService.save(comment);
 
@@ -47,13 +57,24 @@ public class CommentController {
     }
 
     @PutMapping("/{id}")
-    public CommentResponse update(@PathVariable("id") Long id, @RequestBody CommentRequest commentRequest) {
+    public CommentResponse update(@PathVariable("id") Long id,
+                                  @RequestBody CommentRequest commentRequest,
+                                  @AuthenticationPrincipal UserDetails userDetails) {
+
+        // Giriş yapan kullanıcıyı al
+        User user = userService.findByEmail(userDetails.getUsername());
+
+        Tweet tweet = tweetService.findById(id);
+
         Comment comment = commentService.findById(id);
-        if (!comment.getUser().getId().equals(commentRequest.getUserId())) {
-            throw new TwitterException("Bu yorumu güncelleme yetkiniz yok.", HttpStatus.FORBIDDEN);
+
+        // Kullanıcı tweetin sahibi mi?
+        if (!tweet.getUser().getId().equals(user.getId())) {
+            throw new TwitterException("Bu tweeti güncelleme yetkiniz yok.", HttpStatus.FORBIDDEN);
         }
 
         comment.setText(commentRequest.getText());
+        comment.setTweet(tweet); // ✅ Tweet'i set et!
         commentService.update(comment);
 
         return new CommentResponse(comment);
@@ -61,12 +82,18 @@ public class CommentController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable("id") Long id, @RequestParam("userId") Long userId) {
+    public void deleteById(@PathVariable("id") Long id,
+                           @AuthenticationPrincipal UserDetails userDetails) {
+        // Kullanıcı bilgilerini al
+        User user = userService.findByEmail(userDetails.getUsername());
+
         Comment comment = commentService.findById(id);
+
         Tweet tweet = tweetService.findById(comment.getTweet().getId());
 
-        if (!comment.getUser().getId().equals(userId) && !tweet.getUser().getId().equals(userId)) {
-            throw new TwitterException("Bu yorumu silme yetkiniz yok.", HttpStatus.FORBIDDEN);
+        // Kullanıcı tweetin sahibi mi?
+        if (!tweet.getUser().getId().equals(user.getId())) {
+            throw new TwitterException("Bu tweeti silme yetkiniz yok.", HttpStatus.FORBIDDEN);
         }
 
         commentService.delete(id);

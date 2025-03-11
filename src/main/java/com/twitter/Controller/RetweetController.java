@@ -1,6 +1,7 @@
 package com.twitter.Controller;
 
 import com.twitter.Dto.RetweetRequest;
+import com.twitter.Dto.RetweetResponse;
 import com.twitter.Entity.Retweet;
 import com.twitter.Entity.Tweet;
 import com.twitter.Entity.User;
@@ -10,6 +11,9 @@ import com.twitter.Service.TweetService;
 import com.twitter.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,11 +31,23 @@ public class RetweetController {
         this.userService = userService;
     }
 
+    // ✅ Retweet yapma işlemi
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Retweet retweet(@RequestBody RetweetRequest retweetRequest) {
-        User user = userService.findById(retweetRequest.getUserId());
+    public ResponseEntity<RetweetResponse> retweet(@RequestBody RetweetRequest retweetRequest,
+                                                   @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new TwitterException("Kullanıcı kimliği doğrulanamadı!", HttpStatus.UNAUTHORIZED);
+        }
+
+        User user = userService.findByEmail(userDetails.getUsername());
+        if (user == null) {
+            throw new TwitterException("Kullanıcı bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+
         Tweet tweet = tweetService.findById(retweetRequest.getTweetId());
+        if (tweet == null) {
+            throw new TwitterException("Tweet bulunamadı!", HttpStatus.NOT_FOUND);
+        }
 
         if (retweetService.existsByUserIdAndTweetId(user.getId(), tweet.getId())) {
             throw new TwitterException("Bu tweet zaten retweet edildi!", HttpStatus.BAD_REQUEST);
@@ -40,19 +56,36 @@ public class RetweetController {
         Retweet retweet = new Retweet();
         retweet.setUser(user);
         retweet.setTweet(tweet);
+        retweetService.save(retweet);
 
-        return retweetService.save(retweet);
+        int retweetCount = retweetService.countByTweetId(tweet.getId());
+
+        RetweetResponse response = new RetweetResponse(tweet.getId(), user.getEmail(), "Tweet retweet edildi!", retweetCount);
+        return ResponseEntity.ok(response);
     }
 
+    // ✅ Retweet silme işlemi
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRetweet(@PathVariable("id") Long id, @RequestParam("userId") Long userId) {
-        Retweet retweet = retweetService.findById(id);
+    public ResponseEntity<String> deleteRetweet(@PathVariable("id") Long id, @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new TwitterException("Kullanıcı kimliği doğrulanamadı!", HttpStatus.UNAUTHORIZED);
+        }
 
-        if (!retweet.getUser().getId().equals(userId)) {
+        User user = userService.findByEmail(userDetails.getUsername());
+        if (user == null) {
+            throw new TwitterException("Kullanıcı bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+
+        Retweet retweet = retweetService.findById(id);
+        if (retweet == null) {
+            throw new TwitterException("Retweet bulunamadı!", HttpStatus.NOT_FOUND);
+        }
+
+        if (!retweet.getUser().getId().equals(user.getId())) {
             throw new TwitterException("Bu retweeti silme yetkiniz yok!", HttpStatus.FORBIDDEN);
         }
 
         retweetService.delete(id);
+        return ResponseEntity.ok("Retweet başarıyla silindi!");
     }
 }

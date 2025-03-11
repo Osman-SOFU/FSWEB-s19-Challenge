@@ -1,81 +1,47 @@
-package com.twitter.Service;
+package com.twitter.Service.Impl;
 
 import com.twitter.Entity.Like;
 import com.twitter.Entity.Tweet;
 import com.twitter.Entity.User;
 import com.twitter.Exceptions.TwitterException;
 import com.twitter.Repository.LikeRepository;
-import lombok.AllArgsConstructor;
+import com.twitter.Service.LikeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-
-@AllArgsConstructor
 @Service
-public class LikeServiceImpl implements LikeService{
+@RequiredArgsConstructor
+public class LikeServiceImpl implements LikeService {
 
     private final LikeRepository likeRepository;
 
     @Override
-    public List<Like> getAll() {
-        return likeRepository.findAll();
-    }
-
-    @Override
-    public Like findById(Long id) {
-        Optional<Like> optionalLike = likeRepository.findById(id);
-
-        if (optionalLike.isPresent()){
-            return optionalLike.get();
+    @Transactional
+    public Like save(User user, Tweet tweet) {
+        if (hasUserLikedTweet(user, tweet)) {
+            throw new TwitterException("Bu tweeti zaten beğendiniz!", HttpStatus.BAD_REQUEST);
         }
-
-        throw new TwitterException(id +"'li beğenme bulunamadı", HttpStatus.NOT_FOUND);
-    }
-
-    @Override
-    public int countByTweetId(Long id) {
-       return likeRepository.countByTweetId(id);
-    }
-
-    @Override
-    public Like save(Like like) {
-        boolean alreadyLiked = likeRepository.existsByUserIdAndTweetId(like.getUser().getId(), like.getTweet().getId());
-        if (alreadyLiked) {
-            throw new TwitterException("Bu tweet zaten beğenildi!", HttpStatus.BAD_REQUEST);
-        }
+        Like like = new Like();
+        like.setUser(user);
+        like.setTweet(tweet);
         return likeRepository.save(like);
     }
 
     @Override
-    public Like update(Long id, Like like) {
-        Like existingLike = likeRepository
-                .findById(id)
-                .orElseThrow(() -> new TwitterException(id + "'li beğeni bulunamadı", HttpStatus.NOT_FOUND));
-
-        existingLike.setTweet(like.getTweet());
-        existingLike.setUser(like.getUser());
-
-        return likeRepository.save(existingLike);
+    public boolean hasUserLikedTweet(User user, Tweet tweet) {
+        return likeRepository.existsByUserAndTweet(user, tweet);
     }
 
     @Override
-    public void delete(Long id) {
-        likeRepository.deleteById(id);
+    @Transactional
+    public void removeLike(User user, Tweet tweet) {
+        likeRepository.deleteByUserAndTweet(user, tweet);
     }
 
     @Override
-    public boolean existsByUserIdAndTweetId(Long userId, Long tweetId) {
-        return likeRepository.existsByUserIdAndTweetId(userId,tweetId);
-    }
-
-    @Override
-    public void deleteByUserAndTweet(User user, Tweet tweet) {
-        Like like = likeRepository.findByUserIdAndTweetId(user.getId(), tweet.getId());
-        if (like == null) {
-            throw new TwitterException("Beğeni bulunamadı!", HttpStatus.NOT_FOUND);
-        }
-        likeRepository.delete(like);
+    public int countByTweetId(Long tweetId) {
+        return likeRepository.countByTweetId(tweetId);
     }
 }

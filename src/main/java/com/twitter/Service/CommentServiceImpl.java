@@ -23,13 +23,12 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public Comment findById(Long id) {
-        Optional<Comment> optionalComment = commentRepository.findById(id);
-
-        if (optionalComment.isPresent()){
-            return optionalComment.get();
-        }
-
-        throw new TwitterException(id +"'li yorum bulunamadı", HttpStatus.NOT_FOUND);
+        System.out.println("findById çağrıldı, id: " + id);  // Debug Log
+        return commentRepository.findById(id)
+                .orElseThrow(() -> {
+                    System.out.println("Hata: " + id + " numaralı yorum bulunamadı!");
+                    return new TwitterException(id + "'li yorum bulunamadı", HttpStatus.NOT_FOUND);
+                });
     }
 
     @Override
@@ -50,19 +49,23 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public Comment update(Comment comment) {
-        Comment optionalComment = commentRepository
+        Comment existingComment = commentRepository
                 .findById(comment.getId())
-                .orElseThrow(() -> new TwitterException(comment.getId() +"'li yorum bulunamadı", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new TwitterException(comment.getId() + "'li yorum bulunamadı", HttpStatus.NOT_FOUND));
 
+        System.out.println("Yorum güncelleniyor, mevcut text: " + existingComment.getText());
+
+        // Eğer yeni bir text gönderildiyse güncelle
         if (comment.getText() != null) {
-            optionalComment.setText(comment.getText());
+            existingComment.setText(comment.getText());
         }
 
-        return commentRepository.save(optionalComment);
+        return commentRepository.save(existingComment);
     }
 
     @Override
     public void delete(Long id) {
-        commentRepository.deleteById(id);
+        Comment comment = findById(id);
+        commentRepository.deleteById(comment.getId());
     }
 }

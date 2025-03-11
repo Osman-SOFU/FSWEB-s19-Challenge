@@ -11,8 +11,5 @@ import lombok.NoArgsConstructor;
 public class RetweetRequest {
 
     @NotNull
-    private Long userId;
-
-    @NotNull
     private Long tweetId;
 }

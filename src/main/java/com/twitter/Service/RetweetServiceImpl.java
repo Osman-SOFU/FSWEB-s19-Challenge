@@ -1,8 +1,6 @@
 package com.twitter.Service;
 
 import com.twitter.Entity.Retweet;
-import com.twitter.Entity.Tweet;
-import com.twitter.Entity.User;
 import com.twitter.Exceptions.TwitterException;
 import com.twitter.Repository.RetweetRepository;
 import lombok.AllArgsConstructor;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-public class RetweetServiceImpl implements RetweetService{
+public class RetweetServiceImpl implements RetweetService {
 
     private final RetweetRepository retweetRepository;
 
@@ -35,8 +33,7 @@ public class RetweetServiceImpl implements RetweetService{
 
     @Override
     public Retweet save(Retweet retweet) {
-        boolean alreadyRetweeted = retweetRepository.existsByUserIdAndTweetId(retweet.getUser().getId(), retweet.getTweet().getId());
-        if (alreadyRetweeted) {
+        if (existsByUserIdAndTweetId(retweet.getUser().getId(), retweet.getTweet().getId())) {
             throw new TwitterException("Bu tweet zaten retweet edildi!", HttpStatus.BAD_REQUEST);
         }
         return retweetRepository.save(retweet);
@@ -45,15 +42,6 @@ public class RetweetServiceImpl implements RetweetService{
     @Override
     public void delete(Long id) {
         retweetRepository.deleteById(id);
-    }
-
-    @Override
-    public void deleteByUserAndTweet(User user, Tweet tweet) {
-        Retweet retweet = retweetRepository.findByUserIdAndTweetId(user.getId(), tweet.getId());
-        if (retweet == null) {
-            throw new TwitterException("Retweet bulunamadı!", HttpStatus.NOT_FOUND);
-        }
-        retweetRepository.delete(retweet);
     }
 
     @Override
