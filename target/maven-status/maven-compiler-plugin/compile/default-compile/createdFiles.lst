@@ -1,3 +1,4 @@
+com\twitter\Repository\RoleRepository.class
 com\twitter\Repository\LikeRepository.class
 com\twitter\Repository\TweetRepository.class
 com\twitter\Dto\RetweetRequest.class
@@ -15,15 +16,18 @@ com\twitter\Service\UserDetailsServiceImpl.class
 com\twitter\Service\TweetServiceImpl.class
 com\twitter\Service\RetweetService.class
 com\twitter\Controller\TweetController.class
+com\twitter\Dto\RegisterRequest.class
 com\twitter\Exceptions\ErrorResponse.class
 com\twitter\Dto\TweetRequest.class
 com\twitter\Entity\User.class
 com\twitter\Controller\RetweetController.class
 com\twitter\Entity\Like.class
 com\twitter\Repository\CommentRepository.class
+com\twitter\Dto\RegisterResponse.class
 com\twitter\Dto\CommentResponse.class
 com\twitter\Service\AuthenticationService.class
 com\twitter\Entity\Comment.class
+target\classes\.idea\.gitignore
 com\twitter\Service\LikeServiceImpl.class
 com\twitter\Entity\Role.class
 com\twitter\Repository\UserRepository.class

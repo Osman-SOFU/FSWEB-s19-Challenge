@@ -13,8 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.util.List;
-
 @Configuration
 public class SecurityConfig {
 
@@ -24,12 +22,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
+    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService){
+
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
 
-        return new ProviderManager(List.of(daoAuthenticationProvider)); // ✅ Liste olarak verildi
+        return new ProviderManager(daoAuthenticationProvider);
     }
 
     @Bean
@@ -38,11 +37,9 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/register", "/auth/login").permitAll();
-                    auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
                     auth.anyRequest().authenticated();
                 })
-                .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults()) // ✅ Basic Auth aktif
                 .build();
     }
 }

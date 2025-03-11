@@ -10,10 +10,13 @@ import com.twitter.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tweet")
@@ -30,25 +33,30 @@ public class TweetController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TweetResponse create(@Validated @RequestBody TweetRequest tweetRequest) {
-        User user = userService.findById(tweetRequest.getUserId());
+    public TweetResponse create(@Validated @RequestBody TweetRequest tweetRequest,
+                                @AuthenticationPrincipal UserDetails userDetails) {
+        // Kullanıcıyı email ile veritabanından al
+        User user = userService.findByEmail(userDetails.getUsername());
+
         if (user == null) {
             throw new TwitterException("Kullanıcı bulunamadı.", HttpStatus.NOT_FOUND);
         }
 
+        // Tweet nesnesini oluştur ve kullanıcısını belirle
         Tweet tweet = new Tweet();
         tweet.setText(tweetRequest.getText());
         tweet.setUser(user);
 
         tweetService.save(tweet);
 
-        return new TweetResponse(tweet); // ✅ Doğru dönüşüm
+        return new TweetResponse(tweet);
     }
 
-    @GetMapping("/findByUserId/{id}")
-    public List<TweetResponse> getByUserId(@PathVariable("id") Long id) {
-        List<Tweet> tweets = tweetService.findByUserId(id);
-        return tweets.stream().map(TweetResponse::new).toList();
+
+    @GetMapping("/findByUserId")
+    public List<TweetResponse> findByUserId(@RequestParam("userId") Long userId) {
+        List<Tweet> tweets = tweetService.findByUserId(userId);
+        return tweets.stream().map(TweetResponse::new).collect(Collectors.toList());
     }
 
     @GetMapping("/findById/{id}")
@@ -58,27 +66,42 @@ public class TweetController {
     }
 
     @PutMapping("/{id}")
-    public TweetResponse update(@PathVariable("id") Long id, @RequestBody TweetRequest tweetRequest) {
+    public TweetResponse update(@PathVariable("id") Long id,
+                                @RequestBody TweetRequest tweetRequest,
+                                @AuthenticationPrincipal UserDetails userDetails) {
+        // Giriş yapan kullanıcıyı al
+        User user = userService.findByEmail(userDetails.getUsername());
+
         Tweet tweet = tweetService.findById(id);
-        if (!tweet.getUser().getId().equals(tweetRequest.getUserId())) {
+
+        // Kullanıcı tweetin sahibi mi?
+        if (!tweet.getUser().getId().equals(user.getId())) {
             throw new TwitterException("Bu tweeti güncelleme yetkiniz yok.", HttpStatus.FORBIDDEN);
         }
 
+        // Güncelleme işlemi
         tweet.setText(tweetRequest.getText());
         tweetService.update(tweet);
 
-        return new TweetResponse(tweet); // ✅ Doğru dönüşüm
+        return new TweetResponse(tweet);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable("id") Long id, @RequestParam("userId") Long userId) {
+    public void deleteById(@PathVariable("id") Long id,
+                           @AuthenticationPrincipal UserDetails userDetails) {
+        // Kullanıcı bilgilerini al
+        User user = userService.findByEmail(userDetails.getUsername());
+
+        // Tweeti getir
         Tweet tweet = tweetService.findById(id);
 
-        if (!tweet.getUser().getId().equals(userId)) {
+        // Kullanıcı tweetin sahibi mi?
+        if (!tweet.getUser().getId().equals(user.getId())) {
             throw new TwitterException("Bu tweeti silme yetkiniz yok.", HttpStatus.FORBIDDEN);
         }
 
+        // Silme işlemi
         tweetService.delete(id);
     }
 }

@@ -21,11 +21,13 @@ E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\UserServiceImpl.
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Config\SecurityConfig.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Repository\UserRepository.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\LikeService.java
+E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Dto\RegisterResponse.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Repository\CommentRepository.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Entity\Like.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\RetweetServiceImpl.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Controller\LikeController.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\TweetService.java
+E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Repository\RoleRepository.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Entity\Role.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\RetweetService.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Dto\RetweetRequest.java
@@ -33,6 +35,7 @@ E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Entity\Comment.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\UserDetailsServiceImpl.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Service\CommentServiceImpl.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Dto\CommentResponse.java
+E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Dto\RegisterRequest.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Repository\LikeRepository.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Exceptions\ErrorResponse.java
 E:\GitHub\FSWEB-s19-Challenge\src\main\java\com\twitter\Dto\UserRequest.java

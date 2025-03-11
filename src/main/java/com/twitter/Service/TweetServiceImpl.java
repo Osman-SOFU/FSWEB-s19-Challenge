@@ -62,7 +62,8 @@ public class TweetServiceImpl implements TweetService{
 
     @Override
     public void delete(Long id) {
-        tweetRepository.deleteById(id);
+        Tweet tweet = findById(id);
+        tweetRepository.deleteById(tweet.getId());
     }
 
     @Override
