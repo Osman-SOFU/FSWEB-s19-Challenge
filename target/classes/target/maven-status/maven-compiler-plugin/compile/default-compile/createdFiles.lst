@@ -1,4 +1,5 @@
 com\twitter\Repository\RoleRepository.class
+com\twitter\Dto\LikeResponse.class
 com\twitter\Repository\LikeRepository.class
 com\twitter\Repository\TweetRepository.class
 com\twitter\Dto\RetweetRequest.class
@@ -6,6 +7,7 @@ com\twitter\Service\CommentService.class
 com\twitter\Exceptions\TwitterException.class
 com\twitter\Repository\RetweetRepository.class
 com\twitter\Service\LikeService.class
+com\twitter\Service\Impl\LikeServiceImpl.class
 com\twitter\Dto\TweetResponse.class
 com\twitter\Service\RetweetServiceImpl.class
 com\twitter\Controller\LikeController.class
@@ -17,6 +19,7 @@ com\twitter\Service\TweetServiceImpl.class
 com\twitter\Service\RetweetService.class
 com\twitter\Controller\TweetController.class
 com\twitter\Dto\RegisterRequest.class
+com\twitter\Dto\RetweetResponse.class
 com\twitter\Exceptions\ErrorResponse.class
 com\twitter\Dto\TweetRequest.class
 com\twitter\Entity\User.class
@@ -27,8 +30,6 @@ com\twitter\Dto\RegisterResponse.class
 com\twitter\Dto\CommentResponse.class
 com\twitter\Service\AuthenticationService.class
 com\twitter\Entity\Comment.class
-target\classes\.idea\.gitignore
-com\twitter\Service\LikeServiceImpl.class
 com\twitter\Entity\Role.class
 com\twitter\Repository\UserRepository.class
 com\twitter\Config\SecurityConfig.class

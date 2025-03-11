@@ -4,55 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2316f2f-f88f-48d9-b282-e9840cbf1ece" name="Changes" comment="Update V2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/RegisterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/RegisterResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/TweetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/TweetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/TweetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/TweetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/TweetResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/TweetResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/Retweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/Retweet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/Tweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/Tweet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/AuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/TweetServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="e2316f2f-f88f-48d9-b282-e9840cbf1ece" name="Changes" comment="Update V4.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/LikeResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/RetweetResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/LikeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/RetweetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/RetweetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/CommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/LikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/LikeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/RetweetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Dto/RetweetRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/LikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Repository/LikeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/RetweetServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/TweetController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Dto/TweetRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Dto/TweetRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Dto/TweetResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Dto/TweetResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Tweet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Entity/Tweet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/AuthenticationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/AuthenticationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/AuthenticationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserDetailsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Controller/CommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/LikeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Controller/LikeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/RetweetController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Dto/CommentRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Dto/CommentRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Dto/LikeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Dto/LikeRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Dto/RetweetRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Repository/LikeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Repository/LikeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/CommentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/LikeServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/RetweetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Service/RetweetServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/fsweb-s19-challenge-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/target/fsweb-s19-challenge-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/fsweb-s19-challenge-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/target/fsweb-s19-challenge-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/fsweb-s19-challenge-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/fsweb-s19-challenge-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/fsweb-s19-challenge-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/fsweb-s19-challenge-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/fsweb-s19-challenge-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/fsweb-s19-challenge-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/fsweb-s19-challenge-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/fsweb-s19-challenge-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Record" />
         <option value="Interface" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -86,28 +66,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.FswebApplication.executor": "Run",
-    "Maven.Unknown [clean].executor": "Run",
-    "Maven.Unknown [install].executor": "Run",
-    "Maven.Unknown [package].executor": "Run",
-    "Maven.fsweb-s19-challenge [clean].executor": "Run",
-    "Maven.fsweb-s19-challenge [install].executor": "Run",
-    "Maven.fsweb-s19-challenge [package].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/GitHub/University",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
-    "settings.editor.splitter.proportion": "0.28134558"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FswebApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Unknown [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Unknown [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Unknown [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.fsweb-s19-challenge [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.fsweb-s19-challenge [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.fsweb-s19-challenge [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/GitHub/University&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.28134558&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="FswebApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twitter.FswebApplication" />
@@ -145,11 +125,20 @@
       <option name="project" value="LOCAL" />
       <updated>1740957384294</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update V4.">
+      <option name="closed" value="true" />
+      <created>1741653788113</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741653788113</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update V2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update V2" />
+    <MESSAGE value="Update V4." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update V4." />
   </component>
 </project>
