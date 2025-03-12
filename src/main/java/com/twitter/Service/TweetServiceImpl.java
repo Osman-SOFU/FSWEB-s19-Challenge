@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,13 +26,15 @@ public class TweetServiceImpl implements TweetService{
 
     @Override
     public Tweet findById(Long id) {
-        Optional<Tweet> optionalTweet = tweetRepository.findById(id);
+        Tweet tweet = tweetRepository.findById(id)
+                .orElseThrow(() -> new TwitterException(id + "'li tweet bulunamadı", HttpStatus.NOT_FOUND));
 
-        if (optionalTweet.isPresent()){
-            return optionalTweet.get();
+        // ✅ Eğer null ise boş liste ata
+        if (tweet.getComments() == null) {
+            tweet.setComments(new ArrayList<>());
         }
 
-        throw new TwitterException(id +"'li tweet bulunamadı", HttpStatus.NOT_FOUND);
+        return tweet;
     }
 
     @Override

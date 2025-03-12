@@ -21,7 +21,7 @@ public class Comment {
     private Long id;
 
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Yorum metni boş olamaz.")  // ✅ Boş yorum yapılmamalı
     @Column(name = "text")
     private String text;
 

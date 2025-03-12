@@ -69,8 +69,8 @@ public class CommentController {
         Comment comment = commentService.findById(id);
 
         // Kullanıcı tweetin sahibi mi?
-        if (!tweet.getUser().getId().equals(user.getId())) {
-            throw new TwitterException("Bu tweeti güncelleme yetkiniz yok.", HttpStatus.FORBIDDEN);
+        if (!tweet.getUser().getId().equals(user.getId()) && !comment.getUser().getId().equals(user.getId())) {
+            throw new TwitterException("Bu yorumu güncelleme yetkiniz yok.", HttpStatus.FORBIDDEN);
         }
 
         comment.setText(commentRequest.getText());
@@ -92,8 +92,8 @@ public class CommentController {
         Tweet tweet = tweetService.findById(comment.getTweet().getId());
 
         // Kullanıcı tweetin sahibi mi?
-        if (!tweet.getUser().getId().equals(user.getId())) {
-            throw new TwitterException("Bu tweeti silme yetkiniz yok.", HttpStatus.FORBIDDEN);
+        if (!tweet.getUser().getId().equals(user.getId()) && !comment.getUser().getId().equals(user.getId())) {
+            throw new TwitterException("Bu yorumu silme yetkiniz yok.", HttpStatus.FORBIDDEN);
         }
 
         commentService.delete(id);

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class Tweet {
 
     @JsonIgnore // 🚀 Sonsuz döngüyü kırmak için ekledik
     @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>(); // ✅ Liste boş olarak başlatıldı
 
     @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL)
     private List<Like> likes;

@@ -64,8 +64,7 @@ public class LikeController {
     }
 
     @PostMapping("/dislike")
-    @ResponseStatus(HttpStatus.OK)
-    public void dislikeTweet(@RequestBody LikeRequest request, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<LikeResponse> dislikeTweet(@RequestBody LikeRequest request, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
             throw new TwitterException("Kimlik doğrulaması başarısız!", HttpStatus.UNAUTHORIZED);
         }
@@ -84,6 +83,13 @@ public class LikeController {
             throw new TwitterException("Bu tweeti daha önce beğenmediniz.", HttpStatus.BAD_REQUEST);
         }
 
+        // Beğeniyi kaldır
         likeService.removeLike(user, tweet);
+
+        // Güncellenmiş beğeni sayısını al
+        int likeCount = likeService.countByTweetId(tweet.getId());
+
+        // Güncellenmiş beğeni sayısı ile yanıt döndür
+        return ResponseEntity.ok(new LikeResponse(tweet.getId(), user.getEmail(), "Beğeni kaldırıldı!", likeCount));
     }
 }

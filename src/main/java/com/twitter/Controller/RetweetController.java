@@ -64,9 +64,8 @@ public class RetweetController {
         return ResponseEntity.ok(response);
     }
 
-    // ✅ Retweet silme işlemi
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteRetweet(@PathVariable("id") Long id, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<RetweetResponse> deleteRetweet(@PathVariable("id") Long id, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
             throw new TwitterException("Kullanıcı kimliği doğrulanamadı!", HttpStatus.UNAUTHORIZED);
         }
@@ -86,6 +85,12 @@ public class RetweetController {
         }
 
         retweetService.delete(id);
-        return ResponseEntity.ok("Retweet başarıyla silindi!");
+
+        // Güncellenmiş retweet sayısını al
+        int updatedRetweetCount = retweetService.countByTweetId(retweet.getTweet().getId());
+
+        // Yanıtı oluştur ve döndür
+        RetweetResponse response = new RetweetResponse(retweet.getTweet().getId(), user.getEmail(), "Retweet silindi!", updatedRetweetCount);
+        return ResponseEntity.ok(response);
     }
 }

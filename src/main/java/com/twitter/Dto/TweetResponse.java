@@ -4,6 +4,7 @@ import com.twitter.Entity.Comment;
 import com.twitter.Entity.Tweet;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,8 @@ public class TweetResponse {
         this.likeCount = (tweet.getLikes() != null) ? tweet.getLikes().size() : 0;
         this.commentCount = (tweet.getComments() != null) ? tweet.getComments().size() : 0;
         this.retweetCount = (tweet.getRetweets() != null) ? tweet.getRetweets().size() : 0;
-        this.comments = tweet.getComments().stream().map(Comment::getText).collect(Collectors.toList()); // ✅ Sadece text al
+        this.comments = (tweet.getComments() != null) ?
+                tweet.getComments().stream().map(Comment::getText).collect(Collectors.toList())
+                : new ArrayList<>();
     }
 }

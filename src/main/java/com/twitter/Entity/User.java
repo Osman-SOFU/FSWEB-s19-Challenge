@@ -2,8 +2,10 @@ package com.twitter.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,14 +38,16 @@ public class User implements UserDetails {
     @Column(name = "surname")
     private String surname;
 
-    @NotNull
     @NotBlank
+    @NotNull(message = "Email zorunludur.")
+    @Email(message = "Geçerli bir email adresi giriniz.")
     @Column(name = "email", unique = true)
     private String email;
 
     @JsonIgnore
-    @NotNull
     @NotBlank
+    @NotNull(message = "Şifre zorunludur.")
+    @Size(min = 4, message = "Şifre en az 4 karakter olmalıdır.")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

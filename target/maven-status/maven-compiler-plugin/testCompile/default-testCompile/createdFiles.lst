@@ -1,5 +1,6 @@
 MainTest$TweetServiceTests.class
 MainTest.class
 MainTest$RetweetServiceTests.class
+UserServiceTest.class
 MainTest$CommentServiceTests.class
 MainTest$LikeServiceTests.class
