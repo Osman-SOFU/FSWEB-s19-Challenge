@@ -10,4 +10,5 @@ public interface LikeService {
     boolean hasUserLikedTweet(User user, Tweet tweet);
     void removeLike(User user, Tweet tweet);
     int countByTweetId(Long tweetId);
+    Like findById(Long id);
 }

@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tweet")
+@CrossOrigin(origins = "http://localhost:3200") // Sadece React için izin ver
 public class TweetController {
 
     private final TweetService tweetService;

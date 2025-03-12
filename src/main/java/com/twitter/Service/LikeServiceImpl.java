@@ -44,4 +44,10 @@ public class LikeServiceImpl implements LikeService {
     public int countByTweetId(Long tweetId) {
         return likeRepository.countByTweetId(tweetId);
     }
+
+    @Override
+    public Like findById(Long id) {
+        return likeRepository.findById(id)
+                .orElseThrow(() -> new TwitterException(id + " numaralı beğeni bulunamadı", HttpStatus.NOT_FOUND));
+    }
 }
