@@ -1,5 +1,6 @@
 package com.twitter.Service;
 
+import com.twitter.Dto.TweetResponse;
 import com.twitter.Entity.Tweet;
 import com.twitter.Exceptions.TwitterException;
 import com.twitter.Repository.TweetRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -33,13 +35,16 @@ public class TweetServiceImpl implements TweetService{
     }
 
     @Override
-    public List<Tweet> findByUserId(Long userId) {
-        List<Tweet> optionalTweet = tweetRepository.findByUserId(userId);
+    public List<TweetResponse> findByUserId(Long userId) {
+        List<Tweet> tweets = tweetRepository.findByUserId(userId);
 
-        if (optionalTweet.isEmpty()){
-            throw new TwitterException(userId +"'li kullanıcı tweeti bulunamadı", HttpStatus.NOT_FOUND);
+        if (tweets.isEmpty()) {
+            throw new TwitterException(userId + "'li kullanıcı tweeti bulunamadı", HttpStatus.NOT_FOUND);
         }
-        return optionalTweet;
+
+        return tweets.stream()
+                .map(TweetResponse::new) // ✅ Tweet yanında yorumlar da eklenecek!
+                .collect(Collectors.toList());
     }
 
     @Override

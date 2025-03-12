@@ -56,8 +56,7 @@ public class TweetController {
 
     @GetMapping("/findByUserId")
     public List<TweetResponse> findByUserId(@RequestParam("userId") Long userId) {
-        List<Tweet> tweets = tweetService.findByUserId(userId);
-        return tweets.stream().map(TweetResponse::new).collect(Collectors.toList());
+        return tweetService.findByUserId(userId);
     }
 
     @GetMapping("/findById/{id}")

@@ -1,7 +1,3 @@
-/*
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.twitter.Entity.*;
 import com.twitter.Exceptions.TwitterException;
 import com.twitter.Repository.*;
@@ -9,9 +5,10 @@ import com.twitter.Repository.*;
 import com.twitter.Service.CommentServiceImpl;
 import com.twitter.Service.RetweetServiceImpl;
 import com.twitter.Service.TweetServiceImpl;
+
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,14 +17,19 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 class MainTest {
 
     @Nested
     @DisplayName("Comment Service Tests")
     class CommentServiceTests {
-        @Mock private CommentRepository commentRepository;
-        @InjectMocks private CommentServiceImpl commentService;
+        @Mock
+        private CommentRepository commentRepository;
+        @InjectMocks
+        private CommentServiceImpl commentService;
 
         private Comment comment;
 
@@ -171,4 +173,4 @@ class MainTest {
         }
     }
 }
- */
+

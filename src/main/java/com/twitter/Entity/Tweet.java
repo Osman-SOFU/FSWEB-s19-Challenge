@@ -1,5 +1,6 @@
 package com.twitter.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +31,7 @@ public class Tweet {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnore // 🚀 Sonsuz döngüyü kırmak için ekledik
     @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL)
     private List<Comment> comments;
 

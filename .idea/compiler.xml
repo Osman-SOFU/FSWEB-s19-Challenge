@@ -7,13 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FSWEB-s19-Challenge" />
+        <module name="fsweb-s19-challenge" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FSWEB-s19-Challenge" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="FSWEB-s19-Challenge" options="-parameters" />
+      <module name="fsweb-s19-challenge" options="-parameters" />
     </option>
   </component>
 </project>
