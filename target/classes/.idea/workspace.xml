@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2316f2f-f88f-48d9-b282-e9840cbf1ece" name="Changes" comment="Update V5">
-      <change afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
+    <list default="true" id="e2316f2f-f88f-48d9-b282-e9840cbf1ece" name="Changes" comment="Update V6">
       <change beforePath="$PROJECT_DIR$/.idea/FSWEB-s19-Challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FSWEB-s19-Challenge.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -13,8 +12,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/TweetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Controller/TweetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twitter/Service/LikeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Config/SecurityConfig.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/AuthController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/twitter/Controller/CommentController.class" beforeDir="false" />
@@ -255,6 +254,7 @@
     <MESSAGE value="Update V2" />
     <MESSAGE value="Update V4." />
     <MESSAGE value="Update V5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update V5" />
+    <MESSAGE value="Update V6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update V6" />
   </component>
 </project>
